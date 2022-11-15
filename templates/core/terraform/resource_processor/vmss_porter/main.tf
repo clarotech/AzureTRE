@@ -161,14 +161,20 @@ resource "null_resource" "vm_linux_reimage" {
     command = "az vmss reimage --name ${azurerm_linux_virtual_machine_scale_set.vm_linux.name} --resource-group ${var.resource_group_name}"
   }
 
-  triggers = {
-    # although we mainly want to catch image tag changes, this covers any custom data change.
-    custom_data_hash = sha256(data.template_cloudinit_config.config.rendered)
+  # triggers = {
+  #   # although we mainly want to catch image tag changes, this covers any custom data change.
+  #   custom_data_hash = sha256(data.template_cloudinit_config.config.rendered)
+  # }
+
+  lifecycle {
+    replace_triggered_by = [
+     azurerm_linux_virtual_machine_scale_set.vm_linux.custom_data
+    ]
   }
 
-  depends_on = [
-    azurerm_linux_virtual_machine_scale_set.vm_linux
-  ]
+  # depends_on = [
+  #   azurerm_linux_virtual_machine_scale_set.vm_linux
+  # ]
 }
 
 resource "azurerm_role_assignment" "vmss_acr_pull" {
