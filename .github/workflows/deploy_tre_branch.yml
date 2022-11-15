@@ -60,7 +60,7 @@ jobs:
       environmentName: ${{ github.event.inputs.environment }}
     secrets:
       AAD_TENANT_ID: ${{ secrets.AAD_TENANT_ID }}
-      ACR_NAME: ${{ format('zzzz{0}', needs.prepare-not-main.outputs.refid) }}
+      ACR_NAME: ${{ format('foo{0}', needs.prepare-not-main.outputs.refid) }}
       DEVCONTAINER_TAG: ${{ needs.prepare-not-main.outputs.refid }}
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       API_CLIENT_ID: ${{ secrets.API_CLIENT_ID }}
@@ -69,9 +69,9 @@ jobs:
       APPLICATION_ADMIN_CLIENT_SECRET: ${{ secrets.APPLICATION_ADMIN_CLIENT_SECRET }}
       CORE_ADDRESS_SPACE: ${{ secrets.CORE_ADDRESS_SPACE }}
       LOCATION: ${{ secrets.LOCATION }}
-      MGMT_RESOURCE_GROUP_NAME: ${{ format('rg-zzzz{0}-mgmt', needs.prepare-not-main.outputs.refid) }}
+      MGMT_RESOURCE_GROUP_NAME: ${{ format('rg-foo{0}-mgmt', needs.prepare-not-main.outputs.refid) }}
       MS_TEAMS_WEBHOOK_URI: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-      MGMT_STORAGE_ACCOUNT_NAME: ${{ format('zzzz{0}mgmt', needs.prepare-not-main.outputs.refid) }}
+      MGMT_STORAGE_ACCOUNT_NAME: ${{ format('foo{0}mgmt', needs.prepare-not-main.outputs.refid) }}
       SWAGGER_UI_CLIENT_ID: ${{ secrets.SWAGGER_UI_CLIENT_ID }}
       TEST_APP_ID: ${{ secrets.TEST_APP_ID }}
       TEST_WORKSPACE_APP_ID: ${{ secrets.TEST_WORKSPACE_APP_ID }}
@@ -80,7 +80,7 @@ jobs:
       TEST_ACCOUNT_CLIENT_SECRET: "${{ secrets.TEST_ACCOUNT_CLIENT_SECRET }}"
       TERRAFORM_STATE_CONTAINER_NAME: ${{ secrets.TERRAFORM_STATE_CONTAINER_NAME }}
       TRE_ADDRESS_SPACE: ${{ secrets.TRE_ADDRESS_SPACE }}
-      TRE_ID: ${{ format('zzzz{0}', needs.prepare-not-main.outputs.refid) }}
+      TRE_ID: ${{ format('foo{0}', needs.prepare-not-main.outputs.refid) }}
       CI_CACHE_ACR_NAME: ${{ secrets.ACR_NAME }}
       TF_LOG: ${{ secrets.TF_LOG }}
       CORE_APP_SERVICE_PLAN_SKU: ${{ secrets.CORE_APP_SERVICE_PLAN_SKU }}
